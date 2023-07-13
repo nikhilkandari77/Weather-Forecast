@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+
+<changeSet id="2" author="Nikhil Rastogi">
+    <comment>Creating table student</comment>
+    <createTable tableName="user">
+        <column name="id" type="Integer" autoIncrement="true">
+            <constraints nullable="false" primaryKey="true" unique="true"/>
+        </column>
+
+        <column name="contact" type="varchar(40)">
+            <constraints nullable="false"/>
+        </column>
+
+        <column name="email" type="varchar(40)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="name" type="varchar(40)"/>
+        <column name="password" type="varchar(40)"/>
+        <column name="role" type="varchar(40)"/>
+    </createTable>
+    <insert tableName="user">
+        <column name="id" valueNumeric="1"/>
+        <column name="contact" value="12345"/>
+        <column name="email" value="nikhil@77"/>
+        <column name="name" value="nikhil rastogi"/>
+        <column name="password" value="nikhil77"/>
+        <column name="role" value="ADMIN"/>
+    </insert>
+    <insert tableName="user">
+        <column name="id" valueNumeric="2"/>
+        <column name="contact" value="123"/>
+        <column name="email" value="nikhil@99"/>
+        <column name="name" value="nikhil kandari"/>
+        <column name="password" value="nikhil77"/>
+        <column name="role" value="ADMIN"/>
+    </insert>
+    <insert tableName="user">
+        <column name="id" valueNumeric="3"/>
+        <column name="contact" value="12345"/>
+        <column name="email" value="nikhil@11"/>
+        <column name="name" value="nikhil nk"/>
+        <column name="password" value="nikhil77"/>
+        <column name="role" value="ADMIN"/>
+    </insert>
+
+</changeSet>
+</databaseChangeLog>

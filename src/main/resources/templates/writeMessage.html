@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en" th:replace="header"> </head>
+<body>
+
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+        <p> Write your message here</p>
+        <div >
+            <form th:action="@{'/user/admin/write'}" method="post"  th:object="${requestDTO}">
+                <input type="hidden" th:value="${id}" name="id" >
+                <label>
+                    <textarea style="width:60rem;height:40vh;margin:auto"
+                              type="text" name="message" placeholder="write here">
+
+                    </textarea>
+                </label>
+                <br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+        </div></div></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" th:replace="header"> </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
+<br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+
+                <button class="btn btn-primary"
+                        th:data-date="${date}"
+                        th:data-temp="${temperature}"
+                        th:onclick="|showGraph(this.getAttribute('data-date')
+                        ,getAttribute('data-temp'))|"> click here to draw chart
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+  function showGraph(date,temperature) {
+    //const xValues
+
+      let y = [];
+      let x =[];
+
+      let s=temperature.toString();
+      let str=s.substring(1,s.length).split(",");
+
+     str.forEach(item=>{
+         y.push(parseInt(item));
+     })
+      s=date.toString();
+     str=s.substring(1,s.length-1).split(",");
+     str.forEach(item=>{
+         x.push(item);
+     })
+      new Chart("myChart", {
+              type: "line",
+              data: {
+                labels: x,//["2015-03-15T13:03:00Z", "2015-03-25T13:02:00Z", "2015-04-25T14:12:00Z"],
+                datasets: [{
+                  data: y,
+                  borderColor: "red",
+                  fill: false
+                }]
+              },
+              options: {
+                legend: {display: false}
+              }
+            });
+  }
+</script>

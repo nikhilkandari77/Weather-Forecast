@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en" th:replace="header"> </head>
+<body>
+<!-- Start your project here-->
+<section class="vh-100" style="background-color: #f5f6f7;">
+  <br><br>
+  <div class="container">
+    <div class="row" th:if="${!historyList.isEmpty()}">
+      <a th:href="'/weather/pattern?query='+${historyList.get(0).getLocation().getName()}">
+        <button class="btn btn-primary"> graphical Stats </button></a>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-10">
+        <table width="100%">
+          <tr>
+            <th>Date</th>
+            <th>City</th>
+            <th>Temperature</th>
+          </tr>
+          <tr th:each="history: ${historyList}">
+            <td th:text="${history.getDate()}" />
+            <td th:text="${history.getLocation().getName()}" />
+            <td th:text="${history.getTemperature()}" />
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End your project here-->
+
+
+</body>
+<div th:replace="footer"></div>
+</html>

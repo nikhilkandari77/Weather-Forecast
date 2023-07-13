@@ -1,0 +1,60 @@
+<head th:fragment="head">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" th:href="@{https://use.fontawesome.com/releases/v5.15.2/css/all.css}" />
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" type="text/css" th:href="@{https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap}" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-weather.min.css}" />
+
+  <link rel="stylesheet" href="../static/css/bootstrap-weather.min.css" />
+  <link rel="stylesheet" th:href="@{/css/custom.css}" />
+  <link rel="stylesheet" href="../static/css/custom.css" />
+
+  <title>Document</title>
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo">Weather Application</div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="/">Home</a></li>
+        <li><a href="/">About</a></li>
+
+
+
+        <li th:if="${session.get('hasLogin')==null||session.get('hasLogin')==false}"><a href="/user/login">Admin access</a></li>
+        <li th:if="${session.get('hasLogin')}"><a href="/user/admin"> Write Message</a></li>
+        <li th:if="${session.get('hasLogin')}"><a href="/user/login"> Logout</a></li>
+        <li><a href="/user/signup">signup</a></li>
+      </div>
+    </ul>
+  </nav><div class="topnav">
+
+  <div class="search-container">
+    <form action="/weather/current">
+      <input list="suggestion" type="text" placeholder="Search.." name="query">
+        <datalist  id="suggestion">
+          <option th:each="location:${locationList}" th:value="${location.getName()}" th:text="${location.getName()}">
+          </option>
+        </datalist>
+
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form><br>
+  </div>
+</div>
+</head>

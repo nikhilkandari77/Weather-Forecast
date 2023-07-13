@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en" th:replace="header"> </head>
+<body>
+<!-- Start your project here-->
+<section class="vh-100" style="background-color: #f5f6f7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+
+                <div class="card bg-dark text-white" style="border-radius: 40px;">
+                    <div class="bg-image" style="border-radius: 35px;">
+                        <img
+                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp"
+                                class="card-img"
+                                alt="weather"
+                        />
+                        <div class="mask" style="background-color: rgba(190, 216, 232, .5);"></div>
+                    </div>
+                    <div class="card-img-overlay text-dark p-5">
+                        <h4 th:text="${weather.getLocation().getName()}" class="mb-0"></h4>
+                        <p th:text="${weather.getCurrent().getTemperature()+'°C'}" class="display-2 my-3"></p>
+                        <h4 th:text="${'Humidity:'+weather.getCurrent().getHumidity()}" class="mb-0"></h4>
+                        <h4 th:text="${'UV:'+weather.getCurrent().getUv_index()}" class="mb-0"></h4>
+                        <p th:text="${'about weather:'+weather.getMessage()}"></p>
+                        <a th:href="'/weather/history?query='+${weather.getLocation().getName()}">
+                            <button class="btn alert alert-primary"> Historical Stats </button></a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End your project here-->
+
+
+</body>
+<div th:replace="footer"></div>
+</html>
